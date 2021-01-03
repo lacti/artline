@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "/home/lacti/.pyenv/shims/python",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        ".aws-sam": true,
+        "**/venv": true
+    }
+}

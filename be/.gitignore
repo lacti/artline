@@ -1,0 +1,9 @@
+.aws-sam
+.git
+.pytest_cache
+__pycache__
+
+mconfig.toml
+*.swp
+events
+samconfig.toml

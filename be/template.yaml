@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Backend API for ArtLine
+
+Resources:
+  TransformFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      MemorySize: 2048
+      Timeout: 30
+      Events:
+        HttpPost:
+          Type: Api
+          Properties:
+            Path: /transform
+            Method: post
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./transform
+      DockerTag: python3.8-v1
+
+Outputs:
+  TransformApi:
+    Description: "API Gateway endpoint URL for Prod stage for Transform function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/transform/"
+  TransformFunction:
+    Description: "Transform Lambda Function ARN"
+    Value: !GetAtt TransformFunction.Arn
+  TransformFunctionIamRole:
+    Description: "Implicit IAM Role created for Transform function"
+    Value: !GetAtt TransformFunctionRole.Arn
